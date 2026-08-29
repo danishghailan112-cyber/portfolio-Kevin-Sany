@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+:root {
+  --color-bg: #060606;
+  --color-bg-soft: #141414;
+  --color-bg-elevated: #1b1b1b;
+  --color-border: rgba(255, 255, 255, 0.14);
+  --color-border-strong: rgba(255, 255, 255, 0.3);
+  --color-text: #f6f6f4;
+  --color-muted: #9c9c9c;
+  --color-placeholder: #dcdcdc;
+  --font-display: "Space Grotesk", Arial, Helvetica, sans-serif;
+  --font-body: "Inter", Arial, Helvetica, sans-serif;
+}
+
+@theme inline {
+  --color-bg: var(--color-bg);
+  --color-bg-soft: var(--color-bg-soft);
+  --color-bg-elevated: var(--color-bg-elevated);
+  --color-border: var(--color-border);
+  --color-text: var(--color-text);
+  --color-muted: var(--color-muted);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  /* Guards against any transient horizontal overflow (webfont swap,
+     entrance-animation transforms, sub-pixel rounding, etc.) ever making
+     the page sideways-scrollable/shiftable on mobile. */
+  max-width: 100%;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body), Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display), Arial, Helvetica, sans-serif;
+}
+
+::selection {
+  background: var(--color-text);
+  color: var(--color-bg);
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* Custom scrollbar - subtle, matches dark theme */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: #2c2c2c;
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3a3a3a;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
